@@ -25,11 +25,11 @@ def read_file(file_path: Path) -> tuple[list[list[float]], list[float]]:
         for row in reader:
             x_list = []
             ys.append(float(row[0]))      # salary
-            x_list.append(float(row[1]))  # time frame for securing position
-            x_list.append(float(row[2]))  # relatedness to career goals
+            # x_list.append(float(row[1]))  # time frame for securing position
+            # x_list.append(float(row[2]))  # relatedness to career goals
             x_list.append(float(row[3]))  # studied abroad?
             x_list.append(float(row[4]))  # held a student leadership position?
-            x_list.append(float(row[5]))  # worked with center of experience?
+            # x_list.append(float(row[5]))  # worked with center of experience?
             x_list.append(float(row[6]))  # number of internships
             x_list.append(float(row[7]))  # GPA
             xs.append(x_list)
@@ -137,3 +137,32 @@ def gradient_descent(xs: list[list[float]], ys: list[float], theta: list[float],
             break
 
     return theta, costs
+
+
+def starter_run():
+    p = Path(__file__).with_name('csi_alum_data.csv')
+    original_xs, original_ys = read_file(p.absolute())
+
+
+    normalized_xs = normalize_xs(original_xs)
+    normalized_ys = normalize_ys(original_ys)
+    initial_theta = [0.0] * (len(normalized_xs[0]) + 1)
+    normalized_theta, normalized_costs = gradient_descent(normalized_xs, normalized_ys, initial_theta)
+    """
+
+    xs = original_xs
+    ys = original_ys
+    initial_theta = [0.0] * (len(xs[0]) + 1)
+    theta, costs = gradient_descent(xs, ys, initial_theta)
+    """
+
+    print(f'--------------------------------------------------------------------------------')
+    print(f'y = {normalized_theta[0]} + {normalized_theta[1]}studied_abroad + '
+          f'{normalized_theta[2]}student_leadership + {normalized_theta[3]}internships + {normalized_theta[4]}gpa')
+    print(f'r-squared: {r_squared(normalized_xs, normalized_ys, normalized_theta)}')
+
+    plot_costs(normalized_costs)
+
+
+if __name__ == '__main__':
+    starter_run()
