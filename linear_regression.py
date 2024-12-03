@@ -2,12 +2,7 @@
 # Machine Learning Group 3 @Champlain College
 
 import csv
-import copy
-import statistics
-import numpy as np
 from scipy import stats
-from typing import Callable
-from math import ceil
 from pathlib import Path
 from sklearn import linear_model
 
@@ -75,11 +70,17 @@ def remove_outliers(original_xs: list[list[float]], original_ys:list[float]) -> 
     return cleaned_xs, cleaned_ys
 
 
-if __name__ == '__main__':
-    p = Path(__file__).with_name('csi_alum_data.csv')
-    original_xs, original_ys = read_file(p.absolute(), [])
+def exclude_parameters_from_model(path: Path, exceptions: list[float]) -> float:
+    xs, ys = read_file(path, exceptions)
+    cleaned_xs, cleaned_ys = remove_outliers(xs, ys)
+    coefficients, y_intercept, r_squared = run_regression_model(cleaned_xs, cleaned_ys)
+    return r_squared
 
-    print(f'\n---------- ALL DATA POINTS ----------')
+
+def run_regression_model_on_major(file_path: Path) -> None:
+    original_xs, original_ys = read_file(file_path, [])
+
+    print(f'---------- ALL DATA POINTS ----------')
     coefficients, y_intercept, r_squared = run_regression_model(original_xs, original_ys)
     display_regression_equation(coefficients, y_intercept, r_squared)
 
@@ -89,9 +90,13 @@ if __name__ == '__main__':
     display_regression_equation(coefficients2, y_intercept2, r_squared2)
 
     print(f'\n---------- EXCLUDING PARTICULAR PARAMETERS ----------')
-    path = Path(__file__).with_name('csi_alum_data.csv')
-    this_xs, this_ys = read_file(path.absolute(), [])
-    cleaned_xs, cleaned_ys = remove_outliers(this_xs, this_ys)
-    coefficients2, y_intercept2, r_squared2 = run_regression_model(cleaned_xs, cleaned_ys)
+    parameters = ["(Salary)", "(Time Frame X)", "(Relatedness X)", "(Studied Abroad X)", "(Student Leadership X)",
+                  "(Center of Experience X)", "(Internships X)", "(GPA X)"]
+    for i in range(1, 8):
+        print(f'{parameters[i]} r-squared: {exclude_parameters_from_model(file_path, [i])}')
 
-    print(f'r-squared: {r_squared2}')
+
+if __name__ == '__main__':
+    print(f'\n--------------------------------- COMPUTER SCIENCE & INNOVATION ALUMNI ---------------------------------')
+    csi_path = Path(__file__).with_name('csi_alum_data.csv')
+    run_regression_model_on_major(csi_path.absolute())
