@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sklearn.ensemble
 
-df = pd.read_csv('csi_alumni_data.csv')
+df = pd.read_csv('csi_alum_data.csv')
 
 x = df.iloc[:,1:8].values # Features
 y = df.iloc[:,0].values # Target Variable
