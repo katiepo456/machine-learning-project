@@ -149,8 +149,25 @@ def run_regression_model_on_major(file_path: Path) -> None:
     coefficients2, y_intercept2, r_squared2 = run_regression_model(cleaned_xs, cleaned_ys)
     display_regression_equation(coefficients2, y_intercept2, r_squared2)
 
+    print(f'\n---------- REGRESSION MODEL FOR GPA & INTERNSHIPS ----------')
+    gpa = []
+    number_of_internships = []
+    for row in cleaned_xs:
+        gpa.append(row[6])
+        number_of_internships.append(row[5])
+
+    xs, ys = read_file(file_path, [1, 2, 3, 4, 5])
+    cleaned_xs, cleaned_ys = remove_outliers(xs, ys)
+    coefficients, y_intercept, r_squared = run_regression_model(cleaned_xs, cleaned_ys)
+    print(f'y = {y_intercept} + '
+          f'{coefficients[0]}(gpa) + '
+          f'{coefficients[1]}(number_of_internships)')
+    print(f'r-squared: {r_squared}')
+
+    # plot_3d(gpa, number_of_internships, cleaned_ys, "Impact of GPA & Internships on Starting Salary")
+
     print(f'\n---------- EXCLUDING PARTICULAR PARAMETERS ----------')
-    for i in range(1, 7):
+    for i in range(0, 7):
         parameters_to_exclude = list(combinations([1, 2, 3, 4, 5, 6, 7], i))
         for parameter_list in parameters_to_exclude:
             parameter_map = {
@@ -163,7 +180,7 @@ def run_regression_model_on_major(file_path: Path) -> None:
                 7: "(GPA X)"
             }
             excluded_parameters = [parameter_map[param] for param in parameter_list if param in parameter_map]
-            print(f'r-squared: {exclude_parameters_from_model(csi_path, list(parameter_list))} '
+            print(f'{exclude_parameters_from_model(csi_path, list(parameter_list))} '
                   f'{", ".join(excluded_parameters)}')
         print("-----------------------------------------------------")
 
