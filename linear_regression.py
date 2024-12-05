@@ -180,12 +180,12 @@ def run_regression_model_on_major(file_path: Path) -> None:
                 7: "(GPA X)"
             }
             excluded_parameters = [parameter_map[param] for param in parameter_list if param in parameter_map]
-            print(f'{exclude_parameters_from_model(csi_path, list(parameter_list))} '
+            print(f'{exclude_parameters_from_model(file_path, list(parameter_list))} '
                   f'{", ".join(excluded_parameters)}')
         print("-----------------------------------------------------")
 
 
-if __name__ == '__main__':
+def linear_regression():
     print(f'\n--------------------------------- COMPUTER SCIENCE & INNOVATION ALUMNI ---------------------------------')
     csi_path = Path(__file__).with_name('csi_alum_data.csv')
     run_regression_model_on_major(csi_path.absolute())
@@ -197,3 +197,7 @@ if __name__ == '__main__':
     print(f'\n--------------------------------- COMPUTER & DIGITAL FORENSICS ALUMNI ----------------------------------')
     csi_path = Path(__file__).with_name('cdf_alum_data.csv')
     run_regression_model_on_major(csi_path.absolute())
+
+
+if __name__ == '__main__':
+    linear_regression()
