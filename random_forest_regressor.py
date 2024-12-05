@@ -6,10 +6,10 @@ import sklearn.ensemble
 
 df = pd.read_csv('csi_alum_data.csv')
 
-x = df.iloc[:,1:8].values # Features
-y = df.iloc[:,0].values # Target Variable
+x = df.iloc[:, 1:8].values  # Features
+y = df.iloc[:, 0].values  # Target Variable
 
-regressor = sklearn.ensemble.RandomForestRegressor( max_leaf_nodes=20, random_state=0, oob_score=True)
+regressor = sklearn.ensemble.RandomForestRegressor(max_leaf_nodes=20, random_state=0, oob_score=True)
 
 regressor.fit(x, y)
 

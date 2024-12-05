@@ -94,7 +94,7 @@ def plot_3d(xs1: list[float], xs2: list[float], ys: list[float], title: str) -> 
     plt.show()
 
 
-def run_regression_model(original_xs: list[list[float]], original_ys:list[float]) -> tuple[list[float], float, float]:
+def run_regression_model(original_xs: list[list[float]], original_ys: list[float]) -> tuple[list[float], float, float]:
     regression = linear_model.LinearRegression(fit_intercept=True)
     xs = original_xs
     ys = original_ys
@@ -119,7 +119,7 @@ def display_regression_equation(coefficients: list[float], y_intercept: float, r
     print(f'r-squared: {r_squared}')
 
 
-def remove_outliers(original_xs: list[list[float]], original_ys:list[float]) -> tuple[list[list[float]], list[float]]:
+def remove_outliers(original_xs: list[list[float]], original_ys: list[float]) -> tuple[list[list[float]], list[float]]:
     z_scores = stats.zscore(original_ys)
     cleaned_xs: list[list[float]] = []
     cleaned_ys: list[float] = []
