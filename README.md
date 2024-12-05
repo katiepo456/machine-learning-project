@@ -1,1 +1,1 @@
-# machine-learning-project
+# Champlain Alumni Salary Prediction
