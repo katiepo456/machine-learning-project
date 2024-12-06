@@ -3,11 +3,12 @@
 ## Overview
 This project is a statistical analysis of post-graduation career salaries for Champlain College alumni.
 
-The model uses two different machine learning algorithms:
+The model uses three different machine learning algorithms:
 1. Linear regression
 2. Random forest
+3. K Nearest Neighbors
 
-The goal of this project is to analyze how much Champlain grads make at their first jobs out of college and to determine
+The goal of this project is to analyze how much Champlain graduates make at their first jobs out of college and to determine
 which factors are the best predictors of salary. We hope the school's career services can make use of our findings.
 
 All points in the original dataset were collected by the Champlain College Career Collaborative. Every year, the college
@@ -20,7 +21,8 @@ All data was anonymized by Champlain College administration before being distrib
 potentially identifying information was removed from the set).
 
 ## Instructions for Running the Models
-[STUFF NEEDED HERE]
+To run the program, run the 'main.py' file. This will run all the models back-to-back, otherwise you can run each model 
+separately in their respective file (i.e. run the linear regression model by running 'linear_regression.py', etc.).
 
 ## Acknowledgements
 Data collected by Champlain College is property of the college.
