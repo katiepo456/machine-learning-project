@@ -83,8 +83,7 @@ def get_max_r2(X_train, X_test, y_train, y_test):
                 max_acc[key] = value
 
 
-
-if __name__ == '__main__':
+def k_nearest_neighbors():
     data = pd.read_csv('csi_alum_data.csv')
 
     # X, y = make_regression(n_samples=100, n_features=5, noise=0.1, random_state=42)
@@ -93,4 +92,8 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.22, random_state=40)
 
     get_max_r2(X_train, X_test, y_train, y_test)
-    #get_info(X_train, X_test, y_train, y_test)
+    # get_info(X_train, X_test, y_train, y_test)
+
+
+if __name__ == '__main__':
+    k_nearest_neighbors()

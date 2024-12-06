@@ -4,28 +4,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sklearn.ensemble
 
-df = pd.read_csv('csi_alum_data.csv')
 
-x = df.iloc[:, 1:8].values  # Features
-y = df.iloc[:, 0].values  # Target Variable
+def random_forest():
+    df = pd.read_csv('csi_alum_data.csv')
 
-regressor = sklearn.ensemble.RandomForestRegressor(max_leaf_nodes=20, random_state=0, oob_score=True)
+    x = df.iloc[:, 1:8].values  # Features
+    y = df.iloc[:, 0].values  # Target Variable
 
-regressor.fit(x, y)
+    regressor = sklearn.ensemble.RandomForestRegressor(max_leaf_nodes=20, random_state=0, oob_score=True)
 
-print(f"Out-of-bag score: {regressor.oob_score_}")
+    regressor.fit(x, y)
 
-predictions = regressor.predict(x)
+    print(f"Out-of-bag score: {regressor.oob_score_}")
 
-mse = sklearn.metrics.mean_squared_error(y, predictions)
-print(f"Mean squared error: {mse}")
+    predictions = regressor.predict(x)
 
-r2 = sklearn.metrics.r2_score(y, predictions)
-print(f"R2 score: {r2}")
+    mse = sklearn.metrics.mean_squared_error(y, predictions)
+    print(f"Mean squared error: {mse}")
 
-tree_to_plot = regressor.estimators_[0]
+    r2 = sklearn.metrics.r2_score(y, predictions)
+    print(f"R2 score: {r2}")
 
-plt.figure(figsize=(10,8))
-sklearn.tree.plot_tree(tree_to_plot, feature_names=df.iloc[:,1:8].columns.tolist(), filled=True, rounded=True, fontsize=5)
-plt.title("Decision Tree")
-plt.show()
+    tree_to_plot = regressor.estimators_[0]
+
+    plt.figure(figsize=(10,8))
+    sklearn.tree.plot_tree(tree_to_plot, feature_names=df.iloc[:,1:8].columns.tolist(), filled=True, rounded=True, fontsize=5)
+    plt.title("Decision Tree")
+    plt.show()
+
+
+if __name__ == '__main__':
+    random_forest()
