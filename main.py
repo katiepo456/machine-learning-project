@@ -1,7 +1,7 @@
 # Machine Learning Group 3
 
 from linear_regression import linear_regression
-from random_forest_regressor import random_forest
+from random_forest_regressor import random_forest_model
 from k_nearest_neighbors import k_nearest_neighbors
 
 if __name__ == '__main__':
@@ -10,7 +10,7 @@ if __name__ == '__main__':
     print(f'-----------------------------------------------------')
 
     print(f'\n\n------------------- RANDOM FOREST -------------------')
-    random_forest()
+    random_forest_model()
     print(f'-----------------------------------------------------')
 
     print(f'\n\n-------------- LINEAR REGRESSION MODEL --------------')
