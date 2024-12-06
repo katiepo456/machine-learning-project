@@ -160,10 +160,11 @@ def run_regression_model_on_major(file_path: Path) -> None:
     cleaned_xs, cleaned_ys = remove_outliers(xs, ys)
     coefficients, y_intercept, r_squared = run_regression_model(cleaned_xs, cleaned_ys)
     print(f'y = {y_intercept} + '
-          f'{coefficients[0]}(gpa) + '
+          f'{coefficients[0]}(gpa) + '  # use different parameters by adjusting the indices
           f'{coefficients[1]}(number_of_internships)')
     print(f'r-squared: {r_squared}')
 
+    # uncomment this in order to generate 3d plots for each major
     # plot_3d(gpa, number_of_internships, cleaned_ys, "Impact of GPA & Internships on Starting Salary")
 
     print(f'\n---------- EXCLUDING PARTICULAR PARAMETERS ----------')
