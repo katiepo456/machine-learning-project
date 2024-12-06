@@ -2,10 +2,11 @@
 
 from linear_regression import linear_regression
 from random_forest_regressor import random_forest_model
+from k_nearest_neighbors import k_nearest_neighbors
 
 if __name__ == '__main__':
     print(f'\n\n---------------- K NEAREST NEIGHBORS ----------------')
-    # run KNN
+    k_nearest_neighbors()
     print(f'-----------------------------------------------------')
 
     print(f'\n\n------------------- RANDOM FOREST -------------------')

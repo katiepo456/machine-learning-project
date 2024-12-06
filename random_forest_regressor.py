@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import sklearn.ensemble
 from sklearn.model_selection import train_test_split
 
-
 def plot_model(model, df):
     # Try to plot, if we cant, display data
     try:
