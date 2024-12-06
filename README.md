@@ -21,7 +21,13 @@ All data was anonymized by Champlain College administration before being distrib
 potentially identifying information was removed from the set).
 
 ## Instructions for Running the Models
-To run the program, run the 'main.py' file. This will run all the models back-to-back, otherwise you can run each model 
+The code in this repository currently allows the user to run a linear regression, random forest, and KNN analysis on the
+data for three majors:
+1. Computer Science
+2. Computer Networking & Cybersecurity
+3. Computer & Digital Forensics
+
+To run the program, run the 'main.py' file. This will run all the models back-to-back. Otherwise, you can run each model 
 separately in their respective file (i.e. run the linear regression model by running 'linear_regression.py', etc.). To
 generate the 3D plots for linear regression, uncomment the 'plot3d' line in the 'run_regression_model_on_major()'
 function. These plots can also be found in the 'LinearRegression_ProjectFigures' folder in the repo.
