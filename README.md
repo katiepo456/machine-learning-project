@@ -24,6 +24,9 @@ potentially identifying information was removed from the set).
 To run the program, run the 'main.py' file. This will run all the models back-to-back, otherwise you can run each model 
 separately in their respective file (i.e. run the linear regression model by running 'linear_regression.py', etc.).
 
+### Random Forest
+In order to edit the parameters of the Random Forest Regressor, simply change, remove, or add arguments to the RandomForestRegressor function on line 64 of random_forest_regressor.py
+
 ## Acknowledgements
 Data collected by Champlain College is property of the college.
 
